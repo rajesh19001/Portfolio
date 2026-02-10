@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Rajesh | Textile Technologist Portfolio</title>
+    <style>
+        /* --- PROFESSIONAL "SLATE DARK" THEME VARIABLES --- */
+        :root {
+            /* Backgrounds: Not pitch black, but deep professional slate/grey */
+            --bg-body: #0f172a;       /* Very dark blue-grey */
+            --bg-card: #1e293b;       /* Lighter slate for cards */
+            --bg-nav: rgba(15, 23, 42, 0.95);
+            
+            /* Text Colors */
+            --text-main: #f1f5f9;     /* Off-white for main text */
+            --text-muted: #94a3b8;    /* Muted blue-grey for subtext */
+            
+            /* Accents */
+            --accent: #38bdf8;        /* Sky Blue for highlights */
+            --accent-hover: #0ea5e9;  /* Darker blue for hover states */
+            
+            --transition: all 0.3s ease;
+        }
+
+        /* --- GLOBAL RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-nav);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin-top: 0.5rem;
+            border-radius: 2px;
+        }
+
+        /* --- HERO SECTION --- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 80px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-content h3 {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            max-width: 600px;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .education-card h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-box {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .skill-box h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            color: var(--text-main);
+        }
+
+        .skill-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* --- INTERESTS TAGS --- */
+        .interests-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .interest-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* --- ASSIGNMENTS / PROJECTS --- */
+        .project-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-header h3 {
+            color: var(--text-main);
+            font-size: 1.5rem;
+        }
+
+        .project-type {
+            font-size: 0.85rem;
+            font-family: monospace;
+            color: var(--accent);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* --- CONTACT --- */
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-container p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-large {
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 4rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            nav { padding: 1rem; }
+            .nav-links { display: none; } /* Hide nav links on mobile for simplicity */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">M. RAJESH</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#assignments">Assignments</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <h2>Textile Technology Student</h2>
+            <h1>M Rajesh</h1>
+            <h3>Bridging Micro Structure & Macro Impact</h3>
+            <p class="hero-description">
+                I am a 3rd-year student at Kumaraguru College, driven to analyze how fibre structure dictates performance in real-world environments. Specializing in Textile Science and Polymer Chemistry.
+            </p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    Hello! I am Rajesh, originally from Kadapa. I am a passionate student of Textile Technology driven by the intersection of microscopic structure and macroscopic impact.
+                </p>
+                <p>
+                    My academic and professional focus lies in Textile Science, specifically analyzing how fibre structure dictates performance in real-world environments. Whether it is polymer chemistry or hands-on fabric analysis, I am committed to understanding the "why" and "how" behind the material.
+                </p>
+            </div>
+            <div class="education-card">
+                <h4>Education</h4>
+                <p style="color: white; font-weight: bold;">Kumaraguru College</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">B.Tech in Textile Technology</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">3rd Year | Current</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Skills & Interests</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <h3>Technical Expertise</h3>
+                <ul class="skill-list">
+                    <li>Textile Fibre Structures & Analysis</li>
+                    <li>Polymer Chemistry</li>
+                    <li>Hands-on Industrial Experience</li>
+                    <li>Microsoft Office Suite</li>
+                    <li>Material Science Research</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <h3>Professional Traits</h3>
+                <ul class="skill-list">
+                    <li>Critical Thinking & Problem Solving</li>
+                    <li>Active Listener</li>
+                    <li>Continuous Learner</li>
+                    <li>Research & Analysis</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <h3>Interests</h3>
+                <div class="interests-wrapper">
+                    <span class="interest-tag">Android Tech</span>
+                    <span class="interest-tag">Textile Books</span>
+                    <span class="interest-tag">History</span>
+                    <span class="interest-tag">Politics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="assignments">
+        <h2 class="section-title">Assignments & Projects</h2>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Ballistic Textile Research</h3>
+                <span class="project-type">Research Paper</span>
+            </div>
+            <p class="project-desc">
+                Conducted deep research on the working principles of ballistic cloths. Analyzed how specific weave structures and high-performance fibers protect the wearer from external threats by dissipating energy upon impact.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Non-Destructive Testing Prototype</h3>
+                <span class="project-type">Hardware / Product Design</span>
+            </div>
+            <p class="project-desc">
+                Designed and created a prototype for a textile testing device. The device successfully calculates breaking strength, GSM (Grams per Square Meter), and weight without damaging the fabric, offering a sustainable alternative to traditional destructive testing methods.
+            </p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-container">
+            <p>
+                I am currently looking for internships and opportunities to apply my knowledge in Textile Science.
+            </p>
+            <a href="mailto:rajesh19001@proton.me" class="btn btn-large">Say Hello</a>
+            
+            <div style="margin-top: 3rem;">
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Connect on Social</p>
+                <a href="https://www.linkedin.com/in/metikala-rajesh-003b92268" target="_blank" style="color: var(--accent); font-weight: bold;">LinkedIn Profile ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 M Rajesh. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
