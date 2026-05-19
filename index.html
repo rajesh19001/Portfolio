@@ -7,7 +7,6 @@
     <style>
         /* --- PROFESSIONAL "SLATE DARK" THEME VARIABLES --- */
         :root {
-            /* Backgrounds: Not pitch black, but deep professional slate/grey */
             --bg-body: #0f172a;       /* Very dark blue-grey */
             --bg-card: #1e293b;       /* Lighter slate for cards */
             --bg-nav: rgba(15, 23, 42, 0.95);
@@ -59,7 +58,7 @@
         }
 
         nav {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 1.2rem 2rem;
             display: flex;
@@ -92,7 +91,7 @@
         /* --- SECTIONS GENERAL --- */
         section {
             padding: 6rem 2rem;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -161,11 +160,19 @@
             border-radius: 4px;
             font-weight: 600;
             font-size: 1rem;
+            background: transparent;
+            cursor: pointer;
         }
 
         .btn:hover {
             background: rgba(56, 189, 248, 0.1);
             transform: translateY(-3px);
+        }
+
+        .btn-inline {
+            padding: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            margin-top: 1rem;
         }
 
         /* --- ABOUT SECTION --- */
@@ -196,7 +203,7 @@
         /* --- SKILLS SECTION --- */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -205,17 +212,21 @@
             padding: 2rem;
             border-radius: 8px;
             transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.02);
         }
 
         .skill-box:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-color: rgba(56, 189, 248, 0.2);
         }
 
         .skill-box h3 {
             margin-bottom: 1.5rem;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-main);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 0.5rem;
         }
 
         .skill-list li {
@@ -223,6 +234,7 @@
             padding-left: 20px;
             margin-bottom: 0.8rem;
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         .skill-list li::before {
@@ -236,30 +248,39 @@
         .interests-wrapper {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.8rem;
         }
         
         .interest-tag {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.05);
             color: var(--accent);
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 50px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            font-size: 0.85rem;
+            border: 1px solid rgba(56, 189, 248, 0.1);
         }
 
-        /* --- ASSIGNMENTS / PROJECTS --- */
+        /* --- ASSIGNMENTS / PROJECTS GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
         .project-card {
             background: var(--bg-card);
             padding: 2.5rem;
             border-radius: 8px;
-            margin-bottom: 2rem;
             border: 1px solid rgba(255,255,255,0.05);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-card:hover {
             border-color: var(--accent);
+            transform: scale(1.01);
         }
 
         .project-header {
@@ -268,22 +289,28 @@
             align-items: baseline;
             margin-bottom: 1rem;
             flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .project-header h3 {
             color: var(--text-main);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
         .project-type {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-family: monospace;
             color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
         }
 
         .project-desc {
             color: var(--text-muted);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            flex-grow: 1;
         }
 
         /* --- CONTACT --- */
@@ -318,8 +345,9 @@
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.8rem; }
             .about-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
             nav { padding: 1rem; }
-            .nav-links { display: none; } /* Hide nav links on mobile for simplicity */
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -343,9 +371,9 @@
             <h1>M Rajesh</h1>
             <h3>Bridging Micro Structure & Macro Impact</h3>
             <p class="hero-description">
-                I am a 3rd-year student at Kumaraguru College, driven to analyze how fibre structure dictates performance in real-world environments. Specializing in Textile Science and Polymer Chemistry.
+                I am a 3rd-year student at Kumaraguru College, driven to analyze how fibre structure dictates performance in real-world environments. Specializing in Textile Science, Polymer Chemistry, and Geo-textiles.
             </p>
-            <a href="#contact" class="btn">Get In Touch</a>
+            <a href="#assignments" class="btn">View My Work</a>
         </div>
     </section>
 
@@ -354,16 +382,17 @@
         <div class="about-grid">
             <div class="about-text">
                 <p>
-                    Hello! I am Rajesh, originally from Kadapa. I am a passionate student of Textile Technology driven by the intersection of microscopic structure and macroscopic impact.
+                    Hello! I am Rajesh, originally from Kadapa. I am a passionate student of Textile Technology driven by the intersection of microscopic material properties and macroscopic engineering impact.
                 </p>
                 <p>
-                    My academic and professional focus lies in Textile Science, specifically analyzing how fibre structure dictates performance in real-world environments. Whether it is polymer chemistry or hands-on fabric analysis, I am committed to understanding the "why" and "how" behind the material.
+                    My academic focus lies in Textile Science, analyzing how advanced fiber properties behave in real-world infrastructure systems. My core engineering interests lean heavily toward Geo-textiles, technical applications, and functional product design—utilizing multi-layered textile substrates to tackle containment, structural, and civil engineering challenges.
                 </p>
             </div>
             <div class="education-card">
                 <h4>Education</h4>
-                <p style="color: white; font-weight: bold;">Kumaraguru College</p>
+                <p style="color: white; font-weight: bold;">Kumaraguru College of Technology</p>
                 <p style="font-size: 0.9rem; color: var(--text-muted);">B.Tech in Textile Technology</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Roll: 23BTT308</p>
                 <p style="font-size: 0.9rem; color: var(--text-muted);">3rd Year | Current</p>
             </div>
         </div>
@@ -376,30 +405,33 @@
                 <h3>Technical Expertise</h3>
                 <ul class="skill-list">
                     <li>Textile Fibre Structures & Analysis</li>
-                    <li>Polymer Chemistry</li>
-                    <li>Hands-on Industrial Experience</li>
-                    <li>Microsoft Office Suite</li>
-                    <li>Material Science Research</li>
+                    <li>Polymer Chemistry & Material Science</li>
+                    <li>Geo-textiles & Technical Formations</li>
+                    <li>Non-Destructive Material Testing</li>
+                    <li>Hardware & Circuit Interfacing</li>
                 </ul>
             </div>
 
             <div class="skill-box">
-                <h3>Professional Traits</h3>
+                <h3>Software & Prototyping Tools</h3>
                 <ul class="skill-list">
-                    <li>Critical Thinking & Problem Solving</li>
-                    <li>Active Listener</li>
-                    <li>Continuous Learner</li>
-                    <li>Research & Analysis</li>
+                    <li>Autodesk Fusion 360 (3D Modeling)</li>
+                    <li>Bambu Studio (3D Slicing & Printing)</li>
+                    <li>Tinkercad Circuits (Simulation)</li>
+                    <li>RDWorks (Laser Cutting Architecture)</li>
+                    <li>Android Studio & MIT App Inventor</li>
                 </ul>
             </div>
 
             <div class="skill-box">
                 <h3>Interests</h3>
                 <div class="interests-wrapper">
-                    <span class="interest-tag">Android Tech</span>
-                    <span class="interest-tag">Textile Books</span>
-                    <span class="interest-tag">History</span>
-                    <span class="interest-tag">Politics</span>
+                    <span class="interest-tag">Geo-Textiles</span>
+                    <span class="interest-tag">Embedded Electronics</span>
+                    <span class="interest-tag">3D CAD Modeling</span>
+                    <span class="interest-tag">Android Customization</span>
+                    <span class="interest-tag">Textile Research</span>
+                    <span class="interest-tag">Visual Game Logic</span>
                 </div>
             </div>
         </div>
@@ -407,25 +439,74 @@
 
     <section id="assignments">
         <h2 class="section-title">Assignments & Projects</h2>
-        
-        <div class="project-card">
-            <div class="project-header">
-                <h3>Ballistic Textile Research</h3>
-                <span class="project-type">Research Paper</span>
-            </div>
-            <p class="project-desc">
-                Conducted deep research on the working principles of ballistic cloths. Analyzed how specific weave structures and high-performance fibers protect the wearer from external threats by dissipating energy upon impact.
-            </p>
-        </div>
+        <div class="projects-grid">
 
-        <div class="project-card">
-            <div class="project-header">
-                <h3>Non-Destructive Testing Prototype</h3>
-                <span class="project-type">Hardware / Product Design</span>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Modular Thermal Sleeping Bag</h3>
+                    <span class="project-type">Technical Textiles</span>
+                </div>
+                <p class="project-desc">
+                    Engineered a high-efficiency modular insulation configuration integrated directly into technical sleeping structures. Leveraged specialized IXPE foam combinations alongside advanced heat-reflective materials to maximize thermal capture profiles while keeping high packing optimization parameters.
+                </p>
+                <a href="https://teamalpha8.github.io/" target="_blank" class="btn btn-inline">Project Website ↗</a>
             </div>
-            <p class="project-desc">
-                Designed and created a prototype for a textile testing device. The device successfully calculates breaking strength, GSM (Grams per Square Meter), and weight without damaging the fabric, offering a sustainable alternative to traditional destructive testing methods.
-            </p>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Parametric 3D CAD Modeling</h3>
+                    <span class="project-type">Autodesk Fusion 360</span>
+                </div>
+                <p class="project-desc">
+                    Executed complex 3D engineering designs utilizing Autodesk Fusion 360. Developed fully dimension-constrained parametric models, executing advanced profile revolutions, shell configurations for exact material wall thickness, physically modeled custom threading interfaces, and complex geometry mappings including specialized structural bird figures.
+                </p>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Platform: Autodesk Forge Archive (.f3d)</span>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Arduino LED Circuit Simulation</h3>
+                    <span class="project-type">Embedded Circuits</span>
+                </div>
+                <p class="project-desc">
+                    Designed and mapped a dual LED (Red/Orange) microcontroller system leveraging virtual breadboard wiring and an Arduino UNO control deck. Integrated specific current-limiting hardware resistors to mitigate excess electrical flow, verifying full power configurations via live virtual multimeter analysis signaling standard ~18.8 mV operational lines.
+                </p>
+                <a href="https://www.tinkercad.com/things/1LEgv35SEHw-sizzling-turing" target="_blank" class="btn btn-inline">Tinkercad Link ↗</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Android Studio Application</h3>
+                    <span class="project-type">Mobile Development</span>
+                </div>
+                <p class="project-desc">
+                    Developed "Daddy Play," a specialized Kotlin-based Android music player application. Programmed asynchronous threading structures inside Android Studio to handle responsive background playback mechanics and synchronous text parsing routines for live time-stamped scrolling media lyrics.
+                </p>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Stack: Android Studio, Kotlin, Media API</span>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Non-Destructive Fabric Testing</h3>
+                    <span class="project-type">Hardware Prototype</span>
+                </div>
+                <p class="project-desc">
+                    Conceptualized and constructed a customized physical sensor prototype for high-accuracy textile metrics evaluation. Engineered operational logic to precisely calculate target specimen breaking thresholds, fabric GSM (Grams per Square Meter), and baseline weight indicators completely eliminating structural deformation to testing samples.
+                </p>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Focus: Sustainability & Material Lifecycle Preservation</span>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Interactive Simulation Engine</h3>
+                    <span class="project-type">Scratch 3.0 Logic</span>
+                </div>
+                <p class="project-desc">
+                    Programmed an interactive visual ocean simulation logic leveraging block-based visual platforms. Formulated dual-sprite tracking patterns featuring continuous asynchronous locomotion scripts, edge-detection algorithms, multi-frame animation logic arrays, and trigger-event routines to manage real-time game asset coordinates.
+                </p>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Concepts: Event-Driven Loops & Coordinate Tracking</span>
+            </div>
+
         </div>
     </section>
 
@@ -433,19 +514,22 @@
         <h2 class="section-title">Contact</h2>
         <div class="contact-container">
             <p>
-                I am currently looking for internships and opportunities to apply my knowledge in Textile Science.
+                I am actively looking for internships and collaborative research opportunities to apply material science to global industrial engineering challenges.
             </p>
             <a href="mailto:rajesh19001@proton.me" class="btn btn-large">Say Hello</a>
             
             <div style="margin-top: 3rem;">
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Connect on Social</p>
-                <a href="https://www.linkedin.com/in/metikala-rajesh-003b92268" target="_blank" style="color: var(--accent); font-weight: bold;">LinkedIn Profile ↗</a>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Connect on Social & Project Platforms</p>
+                <div style="display: flex; justify-content: center; gap: 2rem;">
+                    <a href="https://www.linkedin.com/in/metikala-rajesh-003b92268" target="_blank" style="color: var(--accent); font-weight: bold;">LinkedIn Profile ↗</a>
+                    <a href="https://teamalpha8.github.io/" target="_blank" style="color: var(--accent); font-weight: bold;">Sleeping Bag Project Site ↗</a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 M Rajesh. All Rights Reserved.</p>
+        <p>&copy; 2026 M Rajesh. All Rights Reserved.</p>
     </footer>
 
     <script>
