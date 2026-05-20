@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RAJESH M // TECH-TEXTILE ENGINEER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration Injection -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#131b2e",
+                    "primary-container": "#0f172a",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "secondary-fixed-dim": "#ffb68e",
+                    "surface-container-low": "#0d1c2d",
+                    "on-tertiary": "#003640",
+                    "on-error": "#690005",
+                    "surface": "#051424",
+                    "inverse-surface": "#d4e4fa",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary-fixed": "#331200",
+                    "on-tertiary-fixed": "#001f26",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-high": "#1c2b3c",
+                    "on-secondary": "#532200",
+                    "surface-tint": "#bec6e0",
+                    "tertiary-fixed": "#acedff",
+                    "tertiary": "#4cd7f6",
+                    "surface-container-highest": "#273647",
+                    "on-tertiary-container": "#008da5",
+                    "surface-container": "#122131",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "surface-bright": "#2c3a4c",
+                    "outline-variant": "#45464d",
+                    "inverse-on-surface": "#233143",
+                    "on-secondary-fixed-variant": "#763300",
+                    "primary": "#bec6e0",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#ffdbca",
+                    "inverse-primary": "#565e74",
+                    "secondary-container": "#ab4c00",
+                    "secondary": "#ffb68e",
+                    "on-surface": "#d4e4fa",
+                    "tertiary-container": "#001b21",
+                    "surface-container-lowest": "#010f1f",
+                    "primary-fixed": "#dae2fd",
+                    "on-secondary-container": "#ffe2d5",
+                    "on-primary-container": "#798098",
+                    "background": "#051424",
+                    "surface-dim": "#051424",
+                    "on-background": "#d4e4fa",
+                    "outline": "#909097",
+                    "surface-variant": "#273647",
+                    "on-primary": "#283044",
+                    "on-surface-variant": "#c6c6cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "margin": "32px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-md": ["JetBrains Mono"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #051424;
+            color: #d4e4fa;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Woven Mesh Overlay */
+        .woven-mesh {
+            background-image: linear-gradient(rgba(144, 144, 151, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(144, 144, 151, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .border-warp { border-left: 1px solid #45464d; }
+        .border-weft { border-top: 1px solid #45464d; }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Glitch Effect */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch-text:hover::before,
+        .glitch-text:hover::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #051424;
+        }
+        .glitch-text:hover::before {
+            left: 2px;
+            text-shadow: -2px 0 #4cd7f6;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-text:hover::after {
+            left: -2px;
+            text-shadow: -2px 0 #ffb68e;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            20% { clip: rect(62px, 9999px, 42px, 0); }
+            40% { clip: rect(16px, 9999px, 78px, 0); }
+            60% { clip: rect(89px, 9999px, 13px, 0); }
+            80% { clip: rect(54px, 9999px, 36px, 0); }
+            100% { clip: rect(72px, 9999px, 81px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(10px, 9999px, 85px, 0); }
+            20% { clip: rect(47px, 9999px, 25px, 0); }
+            40% { clip: rect(33px, 9999px, 90px, 0); }
+            60% { clip: rect(77px, 9999px, 40px, 0); }
+            80% { clip: rect(21px, 9999px, 60px, 0); }
+            100% { clip: rect(55px, 9999px, 15px, 0); }
+        }
+
+        /* Fill Button Transition */
+        .btn-fill {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.4s ease;
+        }
+        .btn-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: currentColor;
+            z-index: -1;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-fill:hover::after {
+            transform: translateX(100%);
+        }
+        .btn-fill-secondary:hover {
+            color: #532200 !important;
+        }
+        .btn-fill-tertiary:hover {
+            color: #001f26 !important;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: currentColor;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Sandbox Card Glow */
+        .sandbox-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px -10px rgba(255, 182, 142, 0.4);
+            border-color: #ffb68e;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Progress Bar Initial State */
+        .progress-bar-fill {
+            width: 0% !important;
+            transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(1000%); opacity: 0; }
+        }
+        .scanner-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4cd7f6, transparent);
+            animation: scan 4s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-text {
+            background: linear-gradient(90deg, #d4e4fa 0%, #ffb68e 50%, #d4e4fa 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 5s linear infinite;
+        }
+        
+        #fiber-canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.8;
+            background: #051424;
+        }
+    </style>
+</head>
+<body class="bg-background selection:bg-secondary/30">
+<!-- Technical Canvas Container -->
+<div id="fiber-canvas-container">
+<canvas id="fiber-canvas"></canvas>
+</div>
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<nav class="flex justify-between items-center w-full h-20 px-margin max-w-container-max mx-auto">
+<div class="font-headline-lg text-[24px] md:text-headline-lg font-bold tracking-tight text-primary shimmer-text">
+            RAJESH M // TECH-TEXTILE
+        </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="nav-link font-label-md text-label-md text-tertiary pb-1" href="#bio">Bio</a>
+<a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#journey">Journey</a>
+<a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#projects">Projects</a>
+<a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#lab">Lab</a>
+<a class="bg-secondary text-on-secondary px-6 py-2 font-label-md text-label-md transition-transform active:scale-95 block btn-fill btn-fill-secondary" href="mailto:rajesh19001@proton.me">Get In Touch</a>
+</div>
+</nav>
+</header>
+<main class="relative pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col justify-center px-margin max-w-container-max mx-auto reveal">
+<div class="absolute top-1/4 right-margin hidden lg:block text-right">
+<div class="text-label-sm font-label-sm text-outline mb-2">SYSTEM_STATUS</div>
+<div class="text-secondary font-label-md text-label-md">LIVE_OPERATIONAL</div>
+<div class="mt-4 w-48 h-1 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-secondary w-2/3 animate-pulse"></div>
+</div>
+</div>
+<div class="max-w-4xl border-warp pl-gutter">
+<div class="text-secondary font-label-md text-label-md tracking-widest mb-4 shimmer-text uppercase">Textile Engineer &amp; Tech Hacker</div>
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface mb-6">
+                Engineering <span class="text-primary italic glitch-text" data-text="Precision">Precision</span> into every fiber.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl">
+                Materials Science researcher at Kumaraguru College of Technology, specializing in fiber structures, IoT-integrated textiles, and extreme cold-resistance systems.
+            </p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-secondary text-on-secondary px-8 py-3 font-label-md text-label-md transition-all btn-fill btn-fill-secondary" href="#main-project">VIEW CORE PROJECT</a>
+<a class="border border-tertiary text-tertiary px-8 py-3 font-label-md text-label-md transition-all btn-fill btn-fill-tertiary" href="https://github.com/rajesh19001/" target="_blank">GITHUB REPOS</a>
+</div>
+</div>
+<div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-gutter border-weft pt-8 opacity-60">
+<div class="reveal-stagger">
+<div class="text-label-sm font-label-sm text-outline">LOC_ORIGIN</div>
+<div class="text-on-surface font-label-md text-label-md">Kadapa, AP</div>
+</div>
+<div class="reveal-stagger">
+<div class="text-label-sm font-label-sm text-outline">CORE_UNIT</div>
+<div class="text-on-surface font-label-md text-label-md">KCT Textile Tech</div>
+</div>
+<div class="reveal-stagger">
+<div class="text-label-sm font-label-sm text-outline">PRECISION</div>
+<div class="text-on-surface font-label-md text-label-md">99.8% Thread Acc.</div>
+</div>
+<div class="reveal-stagger">
+<div class="text-label-sm font-label-sm text-outline">LAB_FOCUS</div>
+<div class="text-on-surface font-label-md text-label-md">IoT-Material R&amp;D</div>
+</div>
+</div>
+</section>
+<!-- About / Journey Section -->
+<section class="py-32 bg-surface-container-lowest/50 border-y border-outline-variant woven-mesh reveal" id="bio">
+<div class="max-w-container-max mx-auto px-margin">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div class="relative group">
+<div class="absolute -top-4 -left-4 w-24 h-24 border-t border-l border-secondary"></div>
+<div class="absolute -bottom-4 -right-4 w-24 h-24 border-b border-r border-tertiary"></div>
+<img alt="Textile Engineering Context" class="w-full h-[500px] object-cover grayscale contrast-125 opacity-70 group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaAxmn3gip2ZmfdDMC3zaKLWPSgA7rr7gQ-kfNqL1SQlfBQqOHaTYncxVm6-Hw8It_IeMOvZvKr1hHy_g5FVbaPdfzQvmJy6kdz0wpwycj5jHSGyhwFL0kjYnMYF0voXOPV9Aio4KH5AYNUrTrRXBbWd-Mav2MrDaXmH6aO6vJhqS3YLEIX6crcm006vV82POK-Ga49ZdTlySOwbdn4pVTnvc_Ea_Byf_g_Ojx8sfgbc2CtCsF-FlwMeP-jIPVoBx-0PAbJbwg5Tk"/>
+<div class="absolute top-4 right-4 bg-surface-container-high px-3 py-1 font-label-sm text-label-sm text-tertiary">REF_STRUCTURE_A1</div>
+</div>
+<div>
+<div class="flex items-center gap-4 mb-6">
+<div class="h-px w-12 bg-secondary"></div>
+<span class="text-secondary font-label-md text-label-md uppercase tracking-widest shimmer-text">The Journey</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-8" id="journey">Engineering Textiles with a <span class="text-tertiary">Tech Edge</span></h2>
+<div class="space-y-6">
+<div class="flex gap-6 border-warp pl-6 relative reveal-stagger">
+<div class="absolute left-[-5px] top-0 w-2 h-2 bg-secondary"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Diploma in Handlooms &amp; Textile Tech</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">SPKM IIHT — Foundational understanding of fabric construction and traditional weaving physics.</p>
+</div>
+</div>
+<div class="flex gap-6 border-warp pl-6 relative reveal-stagger">
+<div class="absolute left-[-5px] top-0 w-2 h-2 bg-tertiary"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">B.Tech in Textile Technology</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Kumaraguru College of Technology — Applying digital literacy and IoT frameworks to advance Fiber Science research and experimental development.</p>
+</div>
+</div>
+</div>
+<p class="mt-10 font-body-lg text-body-lg text-on-surface-variant italic">"I view modern tech stack as a powerful support system for textile innovation. My core commitment remains deepening my expertise in Textile Science, using IoT and software as precision tools to solve complex material challenges."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Project Highlight -->
+<section class="py-32 px-margin max-w-container-max mx-auto reveal" id="main-project">
+<div class="mb-16">
+<span class="text-secondary font-label-md text-label-md shimmer-text">FEATURED_RESEARCH</span>
+<h2 class="font-headline-lg text-headline-lg mt-2">Portable Thermal Sleeping Bag</h2>
+</div>
+<div class="bg-surface-container border border-outline-variant p-8 md:p-12 relative overflow-hidden project-card">
+<div class="scanner-line absolute top-0 left-0 w-full opacity-30"></div>
+<div class="grid lg:grid-cols-12 gap-12">
+<div class="lg:col-span-7 space-y-8">
+<p class="font-body-lg text-body-lg text-on-surface">A high-performance cold-weather sleep system that upgrades a standard 15°C bag to -15°C using precision material layering, 20D DWR ripstop, and IXPE thermal engineering.</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="bg-surface-container-high p-6 border border-outline-variant/30 reveal-stagger">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="thermostat">thermostat</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-2">THERMAL RETENTION</h4>
+<p class="text-label-sm text-on-surface-variant">Advanced synthetic layering to prevent radiative and convective heat loss in sub-zero environments.</p>
+</div>
+<div class="bg-surface-container-high p-6 border border-outline-variant/30 reveal-stagger">
+<span class="material-symbols-outlined text-tertiary mb-4" data-icon="package_2">package_2</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-2">PORTABILITY SCALE</h4>
+<p class="text-label-sm text-on-surface-variant">Optimized compression ratio for quick deployment in emergency and field research scenarios.</p>
+</div>
+</div><div class="mt-8">
+<a class="bg-secondary text-on-secondary px-8 py-3 font-label-md text-label-md transition-all btn-fill btn-fill-secondary inline-block" href="https://teamalpha8.github.io/" target="_blank">
+    VIEW PROJECT SITE
+  </a>
+</div>
+</div>
+<div class="lg:col-span-5 bg-surface-container-highest border border-outline-variant p-6 flex flex-col justify-center">
+<div class="text-label-sm font-label-sm text-outline mb-6">TECHNICAL_SPECIFICATIONS</div>
+<ul class="space-y-4 font-label-md text-label-md"><li class="flex justify-between border-b border-outline-variant pb-2 reveal-stagger">
+<span>MATERIAL_BASE</span>
+<span class="text-secondary">20D DWR RIPSTOP NYLON</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2 reveal-stagger">
+<span>INSULATION</span>
+<span class="text-secondary">180 GSM MICRO-POLAR FLEECE</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2 reveal-stagger">
+<span>TEMP_THRESHOLD</span>
+<span class="text-secondary">-15°C RATED</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2 reveal-stagger">
+<span>WEIGHT_NET</span>
+<span class="text-secondary">1.2KG NOMINAL</span>
+</li></ul>
+</div>
+</div>
+</div>
+</section>
+<!-- The Hacker's Lab - Bento Grid -->
+<section class="py-32 bg-surface-container-lowest border-t border-outline-variant reveal" id="lab">
+<div class="max-w-container-max mx-auto px-margin">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="text-tertiary font-label-md text-label-md shimmer-text">COMPLEMENTARY_TECH_EXPLORATIONS</span>
+<h2 class="font-headline-lg text-headline-lg mt-2">The Textile Engineering Sandbox</h2>
+</div>
+<span class="text-outline font-label-sm text-label-sm hidden md:block">EST_2022 // IoT_NODE_CONNECTED</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+<!-- MediaVault Django -->
+<a class="md:col-span-2 bg-surface p-8 border border-outline-variant sandbox-card project-card relative overflow-hidden group block reveal-stagger" href="https://drive.google.com/file/d/1rWGrAMdm2aQtf73CtANYwPUopJcUmJ7M/view?usp=drive_link" target="_blank">
+<div class="absolute top-0 right-0 p-4 font-label-sm text-label-sm text-outline opacity-20">DEV_DJANGO</div>
+<span class="material-symbols-outlined text-4xl text-secondary mb-6" data-icon="shield_lock">shield_lock</span>
+<h3 class="font-label-md text-label-md text-primary mb-4">MEDIAVAULT // SECURE STORAGE</h3>
+<p class="font-body-md text-on-surface-variant mb-6">A Django-based encrypted file storage application deployed on PythonAnywhere. Features codename-based access and encryption patterns.</p>
+<div class="flex gap-2">
+<span class="bg-surface-container-high px-3 py-1 text-label-sm font-label-sm text-secondary border border-secondary/20">PYTHON</span>
+<span class="bg-surface-container-high px-3 py-1 text-label-sm font-label-sm text-secondary border border-secondary/20">DJANGO</span>
+</div>
+</a>
+<!-- IoT ESP32 -->
+<div class="bg-surface-container-high p-8 border border-outline-variant sandbox-card project-card reveal-stagger">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-6" data-icon="memory">memory</span>
+<h3 class="font-label-md text-label-md text-primary mb-4">IoT EMBEDDED</h3>
+<p class="text-label-sm text-on-surface-variant">Working with ESP32, Arduino, and ES8388 for smart textile sensors (Temp, Touch, Light).</p>
+</div>
+<!-- Music Player -->
+<a class="bg-surface-container-high p-8 border border-outline-variant sandbox-card project-card block reveal-stagger" href="https://drive.google.com/file/d/1pe2cdhe_NjAwnJs79NpXSpiX1ZEP6-JQ/view?usp=drive_link" target="_blank">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-6" data-icon="music_note">music_note</span>
+<h3 class="font-label-md text-label-md text-primary mb-4">ANDROID APP</h3>
+<p class="text-label-sm text-on-surface-variant">Custom-built offline music player developed using Android Studio.</p>
+</a>
+<!-- Location Saver -->
+<a class="bg-surface-container p-8 border border-outline-variant sandbox-card project-card block reveal-stagger" href="https://drive.google.com/drive/folders/1uT_BQV9Tu6esiDpz8Oeo7t3b6PIwmulC?usp=sharing" target="_blank">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6" data-icon="location_on">location_on</span>
+<h3 class="font-label-md text-label-md text-primary mb-4">MIT APP SAVER</h3>
+<p class="text-label-sm text-on-surface-variant">Precision GPS coordinate saver for field research tracking.</p>
+</a>
+<!-- Scratch Card -->
+<a class="bg-surface-container-high p-8 border border-outline-variant sandbox-card project-card block reveal-stagger" href="https://docs.google.com/document/d/1F6UtIWtashFvLy6Da6y6cceKx6hFGJkA/edit?usp=drive_link" target="_blank">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6" data-icon="code">code</span>
+<h3 class="font-label-md text-label-md text-primary mb-4">SCRATCH LOGIC</h3>
+<p class="text-label-sm text-on-surface-variant">Visual programming and logic flow documentation for automated systems.</p>
+</a>
+<!-- Tinkercad Card -->
+<a class="bg-surface-container-high p-8 border border-outline-variant sandbox-card project-card block reveal-stagger" href="https://docs.google.com/document/d/1w_Z3VnFv3sD6afMZyiJ0QeCzU63dHul_/edit?usp=drive_link" target="_blank">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-6" data-icon="bolt">bolt</span>
+<h3 class="font-label-md text-label-md text-primary mb-4">TINKERCAD CIRCUITS</h3>
+<p class="text-label-sm text-on-surface-variant">Simulation and prototyping of embedded textile sensor networks.</p>
+</a>
+<!-- Prototyping Section -->
+<div class="md:col-span-4 bg-surface-container-highest p-8 border border-outline-variant grid md:grid-cols-2 gap-12 sandbox-card project-card reveal">
+<div>
+<div class="text-label-sm font-label-sm text-secondary mb-4 shimmer-text">PROTOTYPING_CORNER</div>
+<h3 class="font-headline-lg text-[28px] mb-6">Additive &amp; Subtractive Fabrication</h3>
+<div class="space-y-4">
+<a class="flex items-center gap-4 hover:text-secondary transition-colors reveal-stagger" href="https://drive.google.com/drive/folders/1X9exTfz8YPeoSUJbeL8TRrF7KYNxzPDX" target="_blank">
+<span class="material-symbols-outlined text-tertiary" data-icon="deployed_code">deployed_code</span>
+<span class="font-label-md text-label-md">Auto Fusion 360 (Bottle Prototyping)</span>
+</a>
+<a class="flex items-center gap-4 hover:text-secondary transition-colors reveal-stagger" href="https://www.canva.com/design/DAHA6uaE8kU/UmSX0kiSLChaWCZAc3jr5Q/edit" target="_blank">
+<span class="material-symbols-outlined text-tertiary" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">System Thinking (Mouse UX Study)</span>
+</a>
+<div class="flex items-center gap-4 reveal-stagger">
+<span class="material-symbols-outlined text-tertiary" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="font-label-md text-label-md">Laser Cut Mechanical Assemblies</span>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden group">
+<img alt="3D Printing Lab" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcCRYFJN7fPghkaqb8sqiMNKLrXsWPVHnvsjDAf2LPgVxRlPXPXr26XS0M-WkY0DUhhp6KQn-tsLoo4syMtigs9ygVazPjXbOvSsuG48JQsVinUsryVG7WM5nOaL-9Za9oA1Z5bF8jFfvtUesYG6HH_SPO5TByN905l5tXwH7zL2BempC0eMyGXZkztYfhBmDtJ-rz1_USDOu2NFiaU0tcD1AuC7WOUXnZLMr8eRyOZIGodlZl8kFawFJxXP_Zf81mkF1MBfce000"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Skills Visualization -->
+<section class="py-32 px-margin max-w-container-max mx-auto reveal">
+<div class="text-center mb-20">
+<span class="text-secondary font-label-md text-label-md tracking-widest uppercase shimmer-text">Expertise Cluster</span>
+<h2 class="font-headline-lg text-headline-lg mt-4">Technical Proficiency Matrix</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container border-warp pl-8 py-8 pr-8 project-card">
+<h3 class="font-label-md text-label-md text-secondary mb-8 uppercase">Core Textile Science</h3>
+<div class="space-y-8">
+<div class="skill-item" data-value="95">
+<div class="flex justify-between mb-2 font-label-sm text-label-sm">
+<span>MATERIAL_SCIENCE</span>
+<span class="percent-label">0%</span>
+</div>
+<div class="w-full h-[2px] bg-outline-variant">
+<div class="h-full bg-secondary progress-bar-fill" style="width: 0%"></div>
+</div>
+</div>
+<div class="skill-item" data-value="90">
+<div class="flex justify-between mb-2 font-label-sm text-label-sm">
+<span>FIBER_STRUCTURES</span>
+<span class="percent-label">0%</span>
+</div>
+<div class="w-full h-[2px] bg-outline-variant">
+<div class="h-full bg-secondary progress-bar-fill" style="width: 0%"></div>
+</div>
+</div>
+<div class="skill-item" data-value="88">
+<div class="flex justify-between mb-2 font-label-sm text-label-sm">
+<span>SPINNING_PHYSICS</span>
+<span class="percent-label">0%</span>
+</div>
+<div class="w-full h-[2px] bg-outline-variant">
+<div class="h-full bg-secondary progress-bar-fill" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border-warp pl-8 py-8 pr-8 project-card">
+<h3 class="font-label-md text-label-md text-tertiary mb-8 uppercase">Software &amp; IoT</h3>
+<div class="space-y-8">
+<div class="skill-item" data-value="85">
+<div class="flex justify-between mb-2 font-label-sm text-label-sm">
+<span>PYTHON_DJANGO</span>
+<span class="percent-label">0%</span>
+</div>
+<div class="w-full h-[2px] bg-outline-variant">
+<div class="h-full bg-tertiary progress-bar-fill" style="width: 0%"></div>
+</div>
+</div>
+<div class="skill-item" data-value="92">
+<div class="flex justify-between mb-2 font-label-sm text-label-sm">
+<span>IoT_INTEGRATION</span>
+<span class="percent-label">0%</span>
+</div>
+<div class="w-full h-[2px] bg-outline-variant">
+<div class="h-full bg-tertiary progress-bar-fill" style="width: 0%"></div>
+</div>
+</div>
+<div class="skill-item" data-value="80">
+<div class="flex justify-between mb-2 font-label-sm text-label-sm">
+<span>CAD_FABRICATION</span>
+<span class="percent-label">0%</span>
+</div>
+<div class="w-full h-[2px] bg-outline-variant">
+<div class="h-full bg-tertiary progress-bar-fill" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin py-12 max-w-container-max mx-auto gap-gutter">
+<div class="font-label-md text-label-md font-bold text-secondary shimmer-text">RAJESH M // TECH-TEXTILE</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">© 2024 RAJESH M. ENGINEERED WITH PRECISION.</div>
+<div class="flex gap-8">
+<a class="nav-link font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="https://www.linkedin.com/in/metikala-rajesh-003b92268/" target="_blank">LinkedIn</a>
+<a class="nav-link font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="https://github.com/rajesh19001/" target="_blank">GitHub</a>
+<a class="nav-link font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="#">ResearchGate</a>
+<a class="nav-link font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="mailto:rajesh19001@proton.me">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+    // Mouse tracking for interactive background
+    let mouseX = 0;
+    let mouseY = 0;
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Fiber Network Animation (Woven Structure)
+    const canvas = document.getElementById('fiber-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let fibers = [];
+    const fiberCount = 45;
+    const colors = ['#bec6e0', '#4cd7f6', '#ffb68e', '#909097']; 
+
+    class Fiber {
+        constructor() {
+            this.init();
+        }
+
+        init() {
+            this.points = [];
+            const side = Math.floor(Math.random() * 4);
+            let x, y;
+            if (side === 0) { x = Math.random() * canvas.width; y = -50; }
+            else if (side === 1) { x = canvas.width + 50; y = Math.random() * canvas.height; }
+            else if (side === 2) { x = Math.random() * canvas.width; y = canvas.height + 50; }
+            else { x = -50; y = Math.random() * canvas.height; }
+
+            this.x = x;
+            this.y = y;
+            
+            const angle = Math.random() * Math.PI * 2;
+            this.vx = Math.cos(angle) * (0.2 + Math.random() * 0.4);
+            this.vy = Math.sin(angle) * (0.2 + Math.random() * 0.4);
+            
+            this.width = Math.random() * 1.2 + 0.4;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.opacity = 0.05 + Math.random() * 0.15;
+            
+            this.maxLength = 15 + Math.floor(Math.random() * 30);
+            this.points.push({x: this.x, y: this.y});
+        }
+
+        update() {
+            this.vx += (Math.random() - 0.5) * 0.01;
+            this.vy += (Math.random() - 0.5) * 0.01;
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            this.points.push({x: this.x, y: this.y});
+            if (this.points.length > this.maxLength) {
+                this.points.shift();
+            }
+
+            if (this.x < -150 || this.x > canvas.width + 150 || this.y < -150 || this.y > canvas.height + 150) {
+                this.init();
+            }
+        }
+
+        draw() {
+            if (this.points.length < 2) return;
+
+            // Interactive pulse logic
+            const distToMouse = Math.sqrt((this.x - mouseX)**2 + (this.y - mouseY)**2);
+            const interactionRadius = 250;
+            let currentOpacity = this.opacity;
+            let currentWidth = this.width;
+
+            if (distToMouse < interactionRadius) {
+                const force = 1 - (distToMouse / interactionRadius);
+                currentOpacity = Math.min(0.8, this.opacity + force * 0.5);
+                currentWidth = this.width + force * 1.5;
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(this.points[0].x, this.points[0].y);
+            
+            for (let i = 1; i < this.points.length; i++) {
+                const xc = (this.points[i].x + this.points[i - 1].x) / 2;
+                const yc = (this.points[i].y + this.points[i - 1].y) / 2;
+                ctx.quadraticCurveTo(this.points[i - 1].x, this.points[i - 1].y, xc, yc);
+            }
+
+            const gradient = ctx.createLinearGradient(
+                this.points[0].x, this.points[0].y, 
+                this.x, this.y
+            );
+            gradient.addColorStop(0, 'transparent');
+            gradient.addColorStop(1, this.color);
+
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = currentWidth;
+            ctx.globalAlpha = currentOpacity;
+            ctx.stroke();
+            ctx.globalAlpha = 1.0;
+        }
+    }
+
+    function initCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        fibers = [];
+        for (let i = 0; i < fiberCount; i++) {
+            fibers.push(new Fiber());
+        }
+    }
+
+    function animateBackground() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let fiber of fibers) {
+            fiber.update();
+            fiber.draw();
+        }
+
+        for (let i = 0; i < fibers.length; i++) {
+            for (let j = i + 1; j < fibers.length; j++) {
+                const f1 = fibers[i];
+                const f2 = fibers[j];
+                const dx = f1.x - f2.x;
+                const dy = f1.y - f2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 150) {
+                    const distToMouse = Math.sqrt((f1.x - mouseX)**2 + (f1.y - mouseY)**2);
+                    const interactionRadius = 200;
+                    let opacityFactor = 0.1;
+                    
+                    if (distToMouse < interactionRadius) {
+                        opacityFactor = 0.1 + (1 - distToMouse/interactionRadius) * 0.4;
+                    }
+
+                    const opacity = (1 - (dist / 150)) * opacityFactor;
+                    ctx.beginPath();
+                    ctx.moveTo(f1.x, f1.y);
+                    ctx.lineTo(f2.x, f2.y);
+                    ctx.strokeStyle = `rgba(144, 144, 151, ${opacity})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(animateBackground);
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+    animateBackground();
+
+    // Reveal on Scroll + Progress Bar Animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                
+                // Stagger child reveals if any
+                const staggers = entry.target.querySelectorAll('.reveal-stagger');
+                staggers.forEach((el, i) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, i * 100);
+                });
+
+                // Animate progress bars if this is the skills section
+                const bars = entry.target.querySelectorAll('.skill-item');
+                bars.forEach((item) => {
+                    const bar = item.querySelector('.progress-bar-fill');
+                    const label = item.querySelector('.percent-label');
+                    const value = item.dataset.value;
+                    
+                    if (bar.style.width === "0%") {
+                        bar.style.width = value + "%";
+                        let count = 0;
+                        const counter = setInterval(() => {
+                            if (count >= value) {
+                                label.innerText = value + "%";
+                                clearInterval(counter);
+                            } else {
+                                count++;
+                                label.innerText = count + "%";
+                            }
+                        }, 15);
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Initial state for stagger elements
+    document.querySelectorAll('.reveal-stagger').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(15px)';
+        el.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+    });
+
+    document.querySelectorAll('.reveal').forEach(section => {
+        revealObserver.observe(section);
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === "#") return;
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+</body></html>
